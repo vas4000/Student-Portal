@@ -1,50 +1,44 @@
-//File: src/App.js
-//This is a root/entry file of the application
-
 import { useState } from "react";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from "./Navigation/Nav";
 import Products from "./Products/Products";
 import products from "./db/data";
-import Recommended from "./Recommended/Recommended";
 import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
+import Preview from './Preview/Preview';
+import Review from './Review/Review'; // Import the Review component
+
 import "./index.css";
 
 function App() {
     const [selectedCategory, setSelectedCategory] = useState(null);
-
-    
-    const [query, setQuery] = useState("");            //Input Filter
+    const [query, setQuery] = useState("");
+    const [selectedProduct, setSelectedProduct] = useState(null); // Track the selected product
+    const [showReview, setShowReview] = useState(false); // Track whether to show review page
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     };
 
-    const filteredItems = products.filter(
-        (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
-    );
-
-    
-    const handleChange = (event) => {                  //Radio Filtering
+    const handleChange = (event) => {
         setSelectedCategory(event.target.value);
     };
 
-    
-    const handleClick = (event) => {                   //Button Filtering
-        setSelectedCategory(event.target.value);
+    const handleClick = (product) => {
+        setSelectedProduct(product);
     };
 
     function filteredData(products, selected, query) {
         let filteredProducts = products;
 
-        
-        if (query) {                                    // Filtering Input Items
-            filteredProducts = filteredItems;
+        if (query) {
+            filteredProducts = products.filter(
+                (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+            );
         }
 
-        
-        if (selected) {                                     // to Apply filter which is selected
+        if (selected) {
             filteredProducts = filteredProducts.filter(
                 ({ category, color, Age, newPrice, title }) =>
                     category === selected ||
@@ -58,13 +52,14 @@ function App() {
         return filteredProducts.map(
             ({ img, title, star, reviews, prevPrice, newPrice }) => (
                 <Card
-                    key={Math.random()}
+                    key={title}
                     img={img}
                     title={title}
                     star={star}
                     reviews={reviews}
                     prevPrice={prevPrice}
                     newPrice={newPrice}
+                    onClick={() => handleClick(title)}
                 />
             )
         );
@@ -73,12 +68,15 @@ function App() {
     const result = filteredData(products, selectedCategory, query);
 
     return (
-        <>
-            <Sidebar handleChange={handleChange} />
-            <Navigation query={query} handleInputChange={handleInputChange} />
-            <Recommended handleClick={handleClick} />
-            <Products result={result} />
-        </>
+        <Router>
+            <div>
+                {!selectedProduct && !showReview && <Sidebar handleChange={handleChange} />}
+                <Navigation query={query} handleInputChange={handleInputChange} />
+                {selectedProduct && <Preview onRateCourse={() => setShowReview(true)} />}
+                {!selectedProduct && !showReview && <Products result={result} />}
+                {showReview && <Review />}
+            </div>
+        </Router>
     );
 }
 

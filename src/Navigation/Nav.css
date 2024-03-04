@@ -3,9 +3,9 @@ nav {
   border-bottom: 2px solid #f3f3f3;
   justify-content: space-around;
   align-items: center;
-  padding: 10px;
   z-index: 999;
-  margin-left: 2rem;
+  background-color: #356e89;
+  left:0%;
 }
 
 .nav-icons:hover {
@@ -14,18 +14,19 @@ nav {
 
 .nav-container{
   position: fixed;
-  box-align:margin-left;
+  
 }
 
 .nav-container2{
   position: fixed;
+  
 }
 
 input {
   padding: 12px 20px;
-  border: none;
-  background: #f7f6f6;
-  outline: none;
+  border: black;
+  background: #a8a6a6;
+  outline: black;
   margin-right: 20px;
   border-radius: 5px;
   position: relative;
@@ -36,4 +37,5 @@ input {
   width: 1.5rem;
   height: 1.5rem;
   margin-left: 2rem;
+  color: black;
 }

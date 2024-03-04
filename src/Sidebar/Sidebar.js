@@ -9,7 +9,8 @@ const Sidebar = ({ handleChange }) => {
     <>
       <section className="sidebar">
               <div className="logo-container">
-                  <h1> 🛒</h1>
+                <br/>
+                <br/>
               </div>
         <Category handleChange={handleChange} />
         {/* <Price handleChange={handleChange} /> */}
