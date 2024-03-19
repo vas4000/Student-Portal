@@ -1,9 +1,12 @@
 // Review.js
+
 import React from 'react';
 import "./Review.css";
+import "../Navigation/Nav.css";
+
 function Review() {
     return (
-        <div className="container">
+        <div className="Review-container">
             <form method="post" action="#action-url">
                 <h1>Course Review</h1>
                 <label>1. Helpfulness/Availability</label><br />

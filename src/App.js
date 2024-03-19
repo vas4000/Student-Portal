@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navigation from "./Navigation/Nav";
 import Products from "./Products/Products";
+import Card from "./components/Card";
 import products from "./db/data";
 import Sidebar from "./Sidebar/Sidebar";
-import Card from "./components/Card";
 import Preview from './Preview/Preview';
-import Review from './Review/Review'; // Import the Review component
+import Review from './Review/Review';
 
 import "./index.css";
 
 function App() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [query, setQuery] = useState("");
-    const [selectedProduct, setSelectedProduct] = useState(null); // Track the selected product
-    const [showReview, setShowReview] = useState(false); // Track whether to show review page
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showReview, setShowReview] = useState(false);
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
@@ -50,7 +50,7 @@ function App() {
         }
 
         return filteredProducts.map(
-            ({ img, title, star, reviews, prevPrice, newPrice }) => (
+            ({ img, title, star, reviews, prevPrice, newPrice, Discription }) => (
                 <Card
                     key={title}
                     img={img}
@@ -59,7 +59,7 @@ function App() {
                     reviews={reviews}
                     prevPrice={prevPrice}
                     newPrice={newPrice}
-                    onClick={() => handleClick(title)}
+                    onClick={() => handleClick({ img, title, Discription })}
                 />
             )
         );
@@ -72,7 +72,7 @@ function App() {
             <div>
                 {!selectedProduct && !showReview && <Sidebar handleChange={handleChange} />}
                 <Navigation query={query} handleInputChange={handleInputChange} />
-                {selectedProduct && <Preview onRateCourse={() => setShowReview(true)} />}
+                {selectedProduct && <Preview selectedCourse={selectedProduct} onRateCourse={() => setShowReview(true)} />}
                 {!selectedProduct && !showReview && <Products result={result} />}
                 {showReview && <Review />}
             </div>

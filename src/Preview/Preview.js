@@ -1,31 +1,41 @@
-import { AiFillStar } from "react-icons/ai";
-import React from 'react';
+// Preview.js
 
-function Preview({ onRateCourse }) {
-    return (
-        <div>
-            <div className="container">
-                <h1>Course Details</h1>
-                <div className="product">
-                    <img src="/Prod-img1.jpg" alt="Course Image" />
-                    <div className="details">
-                        <h2>Advance Software Engineer</h2>
-                        <p className="alignment">The Advanced Software Engineering course is designed to provide comprehensive knowledge and skills to software engineers who are looking to advance their expertise in the field. Building upon fundamental software engineering principles, this course delves into advanced topics, methodologies, and technologies essential for tackling complex software development challenges in today's rapidly evolving technological landscape.</p>
-                        <p>
-                        <AiFillStar className="rating-star" />
-                        <AiFillStar className="rating-star" />
-                        <AiFillStar className="rating-star" />
-                        <AiFillStar className="rating-star" />
-                        <AiFillStar className="rating-star" />
-                        (153)</p>
-                        <button onClick={onRateCourse} className="button">Rate Course</button>
-                        <a href="#" className="button enroll-button">Enroll</a>
-                    </div>
-                </div>
+import React, { useRef } from 'react';
+import { AiFillStar } from 'react-icons/ai';
+import "./Preview.css";
+import "../Navigation/Nav.css";
+
+function Preview({ selectedCourse, onRateCourse }) {
+    
+  return (
+    <div>
+      <div className="container">
+        <h1>Course Details</h1>
+        {selectedCourse && ( 
+          <div className="product">
+            <img src={selectedCourse.img} alt="Course Image" /> 
+            <div className="details">
+              <h2>{selectedCourse.title}</h2> 
+              <p className="alignment">{selectedCourse.Discription}</p> 
+              <p>
+                            <AiFillStar className="rating-star" />
+                            <AiFillStar className="rating-star" />
+                            <AiFillStar className="rating-star" />
+                            <AiFillStar className="rating-star" />
+                            <AiFillStar className="rating-star" />
+                            (153)
+                        </p>
+
+              <span className="right-left">
+                <button onClick={onRateCourse} className="Submit-button">Rate Course</button> 
+                <a href="#" className="enroll-button" style={{ marginLeft: 'auto' }}>Enroll</a>
+              </span>
             </div>
-        </div>
-    );
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default Preview;
-

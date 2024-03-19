@@ -6,20 +6,19 @@ import "./Nav.css";
 const Nav = ({ handleInputChange, query }) => {
                 return (
                     <nav>
-                       <a href="/"><img style={{ width: "40px", height: "45px" }} src="/logo.png" alt="Logo" /></a> 
-
+                       <a href="/"><img style={{ width: "40px", height: "45px" }} src="/logo.png" alt="Logo" title="Home" /></a> 
+                       
                         <div className="nav-container">
                             <input
                                 className="search-input"
                                 type="text"
                                 onChange={handleInputChange}
                                 value={query}
-                                placeholder="Search Courses here."
+                                placeholder="Search Courses here..."
                             />
                         </div>
                         
-                            <b>Student Portal</b>
-                       
+                        
                         <div className="profile-container">
                             <a href="#">
                                 <FiSettings className="nav-icons" />
