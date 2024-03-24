@@ -40,10 +40,9 @@ function App() {
 
         if (selected) {
             filteredProducts = filteredProducts.filter(
-                ({ category, Course, newPrice, title }) =>
+                ({ category, Course, title }) =>
                     category === selected ||
                     Course === selected ||
-                    newPrice === selected ||
                     title === selected
             );
         }

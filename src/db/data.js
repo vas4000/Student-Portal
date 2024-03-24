@@ -12,7 +12,7 @@ const data = [
   {
     img: "/Prod-img7.png",
     title: "Advance Computing Concepts",
-    Course: "6 to 9",
+    Course: "All",
     category: "Term 1",
     Discription: "Advance Computing Concepts delves into advanced topics in computer science, exploring cutting-edge algorithms, data structures, and computational models. Students delve into complex concepts such as parallel computing, artificial intelligence, and quantum computing, gaining insight into emerging technologies shaping the future of computing. Through hands-on projects and theoretical exploration, students develop a deep understanding of computational theory and its practical applications.",
   },
@@ -26,7 +26,7 @@ const data = [
   {
     img: "/Prod-img5.png",
     title: "Advance Database Topics",
-    Course: "6 to 9",
+    Course: "All",
     category: "Term 2",
     Discription: "Advance Database Topics delves into advanced concepts and techniques in database management systems. Students explore topics such as database normalization, query optimization, and transaction management. Additionally, the course covers emerging trends like NoSQL databases and big data analytics, equipping learners with the skills to design and manage complex data systems efficiently.",
   },
@@ -40,7 +40,7 @@ const data = [
   {
     img: "/Prod-img3.png",
     title: "Networking and Data Security",
-    Course: "6 to 9",
+    Course: "All",
     category: "Term 3",
     Discription: "Networking and Data Security focuses on protecting networks and sensitive information from unauthorized access and cyber threats. Students learn about encryption techniques, firewalls, and intrusion detection systems to safeguard data integrity and confidentiality. Additionally, the course covers network protocols, virtual private networks (VPNs), and best practices for secure communication over digital networks.",
   },
