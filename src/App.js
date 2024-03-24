@@ -40,25 +40,20 @@ function App() {
 
         if (selected) {
             filteredProducts = filteredProducts.filter(
-                ({ category, color, Age, newPrice, title }) =>
+                ({ category, Course, newPrice, title }) =>
                     category === selected ||
-                    color === selected ||
-                    Age === selected ||
+                    Course === selected ||
                     newPrice === selected ||
                     title === selected
             );
         }
 
         return filteredProducts.map(
-            ({ img, title, star, reviews, prevPrice, newPrice, Discription }) => (
+            ({ img, title, Discription }) => (
                 <Card
                     key={title}
                     img={img}
                     title={title}
-                    star={star}
-                    reviews={reviews}
-                    prevPrice={prevPrice}
-                    newPrice={newPrice}
                     onClick={() => handleClick({ img, title, Discription })}
                 />
             )

@@ -17,7 +17,7 @@ function Category({ handleChange }) {
         </label>
         <Input
           handleChange={handleChange}
-          value="10 to 17"
+          value="Enrolled"
           title="My Cources"
           name="test"
         />
